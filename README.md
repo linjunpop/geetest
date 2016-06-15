@@ -6,15 +6,46 @@ Elixir toolkit for [Geetest](http://www.geetest.com)
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-  1. Add geetest to your list of dependencies in `mix.exs`:
+* Add geetest to your list of dependencies in `mix.exs`:
 
-        def deps do
-          [{:geetest, "~> 0.0.1"}]
-        end
+```elixir
+def deps do
+  [{:geetest, "~> 0.0.1"}]
+end
+```
 
-  2. Ensure geetest is started before your application:
+* Ensure geetest is started before your application:
 
-        def application do
-          [applications: [:geetest]]
-        end
+```elixir
+def application do
+  [applications: [:geetest]]
+end
+```
 
+## Usage
+
+### Config
+
+```elixir
+config :geetest
+  id: "app-id",
+  key: "app-key"
+```
+
+### Start the server
+
+```elixir
+{:ok, pid} = Geetest.start_link
+```
+
+### Register
+
+```elixir
+{:ok, challenge} = Geetest.register
+```
+
+### Validate
+
+```elixir
+{:ok, challenge} = Geetest.validate("challenge", "validate", "seccode")
+```
