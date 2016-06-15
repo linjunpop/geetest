@@ -23,14 +23,27 @@ defmodule GeetestTest do
 
   @tag :has_config
   test "register and get challenge" do
-    Geetest.start_link
+    {:ok, _pid} = Geetest.start_link
     assert {:ok, challenge} = Geetest.register()
   end
 
   @tag :has_config
   test "register with test provider" do
     Application.put_env(:geetest, :provider, Geetest.Provider.Test)
-    Geetest.start_link
+    {:ok, _pid} = Geetest.start_link
     assert {:ok, "test-challenge"} = Geetest.register()
+  end
+
+  @tag :has_config
+  test "validate" do
+    {:ok, _pid} = Geetest.start_link
+    assert {:ok} = Geetest.validate("d9793c5f1959cb5ce3fae8dec304d2d76f", "d9793c5f1959cb5ce3fae8dec304d2d76f", "d9793c5f1959cb5ce3fae8dec304d2d76f")
+  end
+
+  @tag :has_config
+  test "validate with test provider" do
+    Application.put_env(:geetest, :provider, Geetest.Provider.Test)
+    {:ok, _pid} = Geetest.start_link
+    assert {:ok} = Geetest.validate("1", "1", "1")
   end
 end
