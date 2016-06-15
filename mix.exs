@@ -5,11 +5,13 @@ defmodule Geetest.Mixfile do
     [app: :geetest,
      version: "0.0.1",
      name: "Geetest",
+     description: description,
      source_url: "https://github.com/linjunpop/geetest",
      homepage_url: "https://github.com/linjunpop/geetest",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package,
      deps: deps,
      docs: [
        extras: ["README.md", ]
@@ -38,6 +40,22 @@ defmodule Geetest.Mixfile do
       {:httpoison, "~> 0.8"},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev}
+    ]
+  end
+
+  defp description do
+    "Elixir toolkit for Geetest"
+  end
+
+  defp package do
+    [
+      name: :geetest,
+      files: ["lib", "mix.exs", "README*", "LICENSE"],
+      maintainers: ["Jun Lin"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/linjunpop/geetest"
+      }
     ]
   end
 end
