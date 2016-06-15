@@ -27,7 +27,7 @@ end
 ### Config
 
 ```elixir
-config :geetest
+config :geetest,
   id: "app-id",
   key: "app-key"
 ```
@@ -47,5 +47,5 @@ config :geetest
 ### Validate
 
 ```elixir
-{:ok, challenge} = Geetest.validate("challenge", "validate", "seccode")
+{:ok} = Geetest.validate("challenge", "validate", "seccode")
 ```
